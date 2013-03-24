@@ -23,7 +23,7 @@ module.exports = class
   constructor: (@s3cp, @options) ->
     @_s3 = s3cp._s3
     if not @options.limit
-      @options.limit = 1
+      @options.limit = 5
 
   ###
   ###
@@ -262,7 +262,7 @@ module.exports = class
           return next()
 
         winston.info "s3 put #{file.rpath}"
-        @_s3.putFile file.lpath, file.rpath.replace(/%20/g, " "), (err) ->
+        @_s3.putFile file.lpath, file.rpath.replace(/\s/g, "%20"), (err) ->
 
           if err
             winston.error "s3 put #{file.rpath} ERR #{err.message}"
