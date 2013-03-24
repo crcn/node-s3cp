@@ -4,7 +4,6 @@ step = require "stepc"
 fs = require "fs"
 async = require "async"
 sift = require "sift"
-cstep = require "cstep"
 winston = require "winston"
 crypto = require "crypto"
 path = require "path"
@@ -22,16 +21,16 @@ module.exports = class
   ###
 
   constructor: (@s3cp, @options) ->
-    @_basePath = fs.realpathSync @options.path
     @_s3 = s3cp._s3
 
   ###
   ###
 
-  start: cstep (callback) ->
+  start: (callback) ->
 
     o = outcome.e callback
     self = @
+
 
     step.async(
       (() ->
@@ -52,7 +51,7 @@ module.exports = class
   ###
   ###
 
-  upload: cstep (callback) ->
+  upload: (callback) ->
     self = @
 
     o = outcome.e (err) ->
@@ -74,22 +73,17 @@ module.exports = class
   ###
   ###
 
-  redownload: cstep (callback) ->
+  redownload: (callback) ->
     if fs.existsSync(@options.path)
       rmdir @options.path, () =>
-        @_download callback
+        @download callback
     else
-      @_download callback
+      @download callback
 
   ###
   ###
 
-  download: cstep (callback) ->
-    @_download callback
-    
-
-  _download: (callback) ->
-
+  download: (callback) ->
     o = outcome.e (err) ->
       callback()
 
@@ -106,7 +100,7 @@ module.exports = class
       () ->
         callback()
     )
-
+    
   ###
   ###
 
@@ -194,7 +188,6 @@ module.exports = class
     o = outcome.e callback
     self = @
     self._remoteManifest = []
-
     step.async(
       (() ->
         self._s3.getFile self._manifestPath(), @
@@ -304,12 +297,19 @@ module.exports = class
   ###
 
   _scanLocalFiles: (callback) ->
-    winston.info "local scan #{@options.path}"
+
     @_localFiles = []
     @_remoteFiles = []
+
+    winston.info "local scan #{@options.path}"
+    if not fs.existsSync(@options.path)
+      return callback()
+
+    realpath = fs.realpathSync @options.path
+
     walkr(@options.path).
     filter((file, next) =>
-      file.destination = file.source.replace @_basePath, ""
+      file.destination = file.source.replace realpath, ""
       @_localFiles.push file
       next()
     ).start callback

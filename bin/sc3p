@@ -1,12 +1,20 @@
 #!/usr/bin/env node
 var commander = require("commander"),
-s3cp = require("../")
+platform = require("os").platform(),
+s3cp = require("../")(require(platform == "win32" ? "C:\ProgramData\sc3p\config.json" : "/usr/local/etc/sc3p/config.json"));
+
+function _require(config) {
+  if(config.substr(0, 1) == ".") {
+    config = process.cwd() + "/" + config;
+  }
+  return require(config);
+}
 
 commander.
 command("pull [config]").
 description("downloading files from s3").
 action(function(config) {
-  
+  s3cp.download(_require(config));
 });
 
 
@@ -14,7 +22,14 @@ commander.
 command("push [config]").
 description("upload files to s3").
 action(function(config) {
-  console.log(config)
+  s3cp.upload(_require(config));
+});
+
+commander.
+command("clean-pull [config]").
+description("re-downloads files to s3").
+action(function(config) {
+  s3cp.redownload(_require(config));
 });
 
 commander.parse(process.argv);
