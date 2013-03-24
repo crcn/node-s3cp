@@ -23,7 +23,7 @@ module.exports = class
   constructor: (@s3cp, @options) ->
     @_s3 = s3cp._s3
     if not @options.limit
-      @options.limit = 5
+      @options.limit = 10
 
   ###
   ###

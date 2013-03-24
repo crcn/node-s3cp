@@ -1,6 +1,6 @@
 {
   "name": "s3cp",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Similar to rsync",
   "main": "./lib/index.js",
   "directories": {
