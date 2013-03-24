@@ -1,0 +1,23 @@
+{
+  "name": "s3cp",
+  "version": "0.0.0",
+  "description": "Similar to rsync",
+  "main": "./lib/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/crcn/node-s3cp.git"
+  },
+  "bin": {
+    "s3cp": "./bin/sc3p"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "0198f8cdd1e8d7d858fb6bac4cbd36e59cdf003a"
+}

@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+var commander = require("commander"),
+s3cp = require("../")
+
+commander.
+command("pull [config]").
+description("downloading files from s3").
+action(function(config) {
+  
+});
+
+
+commander.
+command("push [config]").
+description("upload files to s3").
+action(function(config) {
+  console.log(config)
+});
+
+commander.parse(process.argv);
