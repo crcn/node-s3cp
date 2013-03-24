@@ -1,20 +1,32 @@
 #!/usr/bin/env node
 var commander = require("commander"),
 platform = require("os").platform(),
-s3cp = require("../")(require(platform == "win32" ? "C:\ProgramData\sc3p\config.json" : "/usr/local/etc/sc3p/config.json"));
+s3cp = require("../");
 
-function _require(config) {
-  if(config.substr(0, 1) == ".") {
-    config = process.cwd() + "/" + config;
+
+
+commander.
+option('-c, --config <config>', 's3cp config path', String, platform == "win32" ? "C:\ProgramData\sc3p\config.json" : "/usr/local/etc/sc3p/config.json");
+
+function _path(path) {
+  if(path.substr(0, 1) == ".") {
+    path = process.cwd() + "/" + path;
   }
-  return require(config);
+  return path;
+}
+
+function _run(call, config) {
+  cfg = require(_path(config));
+  cp = s3cp(require(_path(commander.config)));
+
+  cp[call].call(cp, cfg);
 }
 
 commander.
 command("pull [config]").
 description("downloading files from s3").
 action(function(config) {
-  s3cp.download(_require(config));
+  _run("download", config);
 });
 
 
@@ -22,14 +34,14 @@ commander.
 command("push [config]").
 description("upload files to s3").
 action(function(config) {
-  s3cp.upload(_require(config));
+  _run("upload", config);
 });
 
 commander.
 command("clean-pull [config]").
 description("re-downloads files to s3").
 action(function(config) {
-  s3cp.redownload(_require(config));
+  _run("redownload", config);
 });
 
 commander.parse(process.argv);
