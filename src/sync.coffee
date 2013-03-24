@@ -192,7 +192,7 @@ module.exports = class
     self._remoteManifest = []
     step.async(
       (() ->
-        self._s3.getFile self._manifestPath(), @
+        self._s3.getFile self._manifestPath().replace(/\s/,"%20"), @
       ),
       (o.s (res) ->
         buffer = []
@@ -359,7 +359,7 @@ module.exports = class
 
     step.async(
       (() ->
-        req = self._s3.put self._manifestPath(), { "Content-Length": content.length, "Content-Type": "json" }
+        req = self._s3.put self._manifestPath().replace(/\s/g,"%20"), { "Content-Length": content.length, "Content-Type": "json" }
 
         async.eachSeries chunks, ((chunk, next) ->
           req.write(chunk)
