@@ -249,7 +249,8 @@ module.exports = class
   ###
 
   _uploadFiles: (callback) ->
-    async.eachLimit @_localManifestDiff, 5, ((file, next) =>
+    winston.info "limit 1"
+    async.eachLimit @_localManifestDiff, 1, ((file, next) =>
 
       return next() if file.dir
       tries = 5
