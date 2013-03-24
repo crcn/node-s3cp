@@ -42,5 +42,3 @@ s3cp pull ./files.json --config ./credentials.json
 ```
 
 s3cp will synchronize the local files whenever the remote files change.
-
-
