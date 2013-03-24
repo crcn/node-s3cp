@@ -22,6 +22,8 @@ module.exports = class
 
   constructor: (@s3cp, @options) ->
     @_s3 = s3cp._s3
+    if not @options.limit
+      @options.limit = 1
 
   ###
   ###
@@ -249,11 +251,11 @@ module.exports = class
   ###
 
   _uploadFiles: (callback) ->
-    winston.info "limit 1"
-    async.eachLimit @_localManifestDiff, 1, ((file, next) =>
+    winston.info "upload limit: #{@options.limit}"
+    async.eachLimit @_localManifestDiff, @options.limit, ((file, next) =>
 
       return next() if file.dir
-      tries = 5
+      tries = 10
       retry = () =>
 
         if not --tries
