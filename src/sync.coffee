@@ -342,7 +342,7 @@ module.exports = class
 
     if not @_localManifestDiff.length and not @_remoteManifestDiff.length
       winston.info "no changes to local or remote manifest.json"
-      return
+      return callback()
 
     winston.info "s3 put #{@_manifestPath()}"
 
