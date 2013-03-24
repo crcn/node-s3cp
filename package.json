@@ -19,5 +19,18 @@
   "author": "",
   "license": "BSD",
   "readmeFilename": "README.md",
-  "gitHead": "0198f8cdd1e8d7d858fb6bac4cbd36e59cdf003a"
+  "gitHead": "0198f8cdd1e8d7d858fb6bac4cbd36e59cdf003a",
+  "dependencies": {
+    "async": "0.2.x",
+    "mime": "1.2.x",
+    "mkdirp": "0.3.x",
+    "rmdir": "1.0.x",
+    "sift": "0.0.x",
+    "stepc": "0.0.x",
+    "commander": "1.1.x",
+    "knox": "0.5.x",
+    "cstep": "0.0.x",
+    "mimetype": "0.0.x",
+    "winston": "0.6.x"
+  }
 }
