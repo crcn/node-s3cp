@@ -2,6 +2,7 @@ knox       = require "knox"
 Sync       = require "./sync"
 async      = require "async"
 toarray    = require "toarray"
+_ = require "underscore"
 
 class S3CP
 
@@ -39,7 +40,7 @@ class S3CP
 
   _run: (command, options, callback) ->
     async.eachSeries toarray(options), ((option, next) =>
-      sync = new Sync(@, option)
+      sync = new Sync(@, _.extend({}, @options, option))
       sync.start () ->
         sync[command].call(sync, next)
     ), callback

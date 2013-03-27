@@ -22,8 +22,13 @@ module.exports = class
 
   constructor: (@s3cp, @options) ->
     @_s3 = s3cp._s3
+
     if not @options.limit
-      @options.limit = 10
+      @options.limit = 30
+
+    if not @options.skip
+      @options.skip = 0
+
 
   ###
   ###
@@ -206,6 +211,8 @@ module.exports = class
         res.on "end", () ->
           try 
             self._remoteManifest = JSON.parse buffer.join ""
+            self._remoteManifest.forEach (file) ->
+              delete file.exists
           catch e
 
           next()
@@ -252,16 +259,22 @@ module.exports = class
 
   _uploadFiles: (callback) ->
     winston.info "upload limit: #{@options.limit}"
+
+    i = 0
     async.eachLimit @_localManifestDiff, @options.limit, ((file, next) =>
 
       return next() if file.dir
       tries = 10
+      i++
+      if i < @options.skip
+        return next()
+
       retry = () =>
 
         if not --tries
           return next()
 
-        winston.info "s3 put #{file.rpath}"
+        winston.info "##{i} s3 put #{file.rpath}"
         @_s3.putFile file.lpath, file.rpath.replace(/\s/g, "%20"), (err) ->
 
           if err

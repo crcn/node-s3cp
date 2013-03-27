@@ -6,7 +6,8 @@ s3cp = require("../");
 
 
 commander.
-option('-c, --config <config>', 's3cp config path', String, platform == "win32" ? "C:\ProgramData\sc3p\config.json" : "/usr/local/etc/sc3p/config.json");
+option('-c, --config <config>', 's3cp config path', String, platform == "win32" ? "C:\ProgramData\sc3p\config.json" : "/usr/local/etc/sc3p/config.json").
+option('-s, --skip <count>', 'skip first N files for upload', Number, 0);
 
 function _path(path) {
   if(path.substr(0, 1) == ".") {
@@ -16,8 +17,12 @@ function _path(path) {
 }
 
 function _run(call, config) {
-  cfg = require(_path(config));
-  cp = s3cp(require(_path(commander.config)));
+  var cfg = require(_path(config));
+
+  var s3cpConfig = require(_path(commander.config));
+  s3cpConfig.skip = commander.skip;
+  
+  cp = s3cp(s3cpConfig);
 
   cp[call].call(cp, cfg);
 }
