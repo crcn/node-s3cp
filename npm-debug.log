@@ -1,0 +1,151 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.2.11
+3 info using node@v0.8.22
+4 verbose node symlink /usr/local/bin/node
+5 verbose publish [ '.' ]
+6 verbose read json /Users/craig/Developer/Public/node-s3cp/package.json
+7 verbose cache add [ '.', null ]
+8 verbose cache add name=undefined spec="." args=[".",null]
+9 verbose parsed url { pathname: '.', path: '.', href: '.' }
+10 silly lockFile 3a52ce78- .
+11 verbose lock . /Users/craig/.npm/3a52ce78-.lock
+12 verbose read json package.json
+13 verbose tar pack [ '/var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz',
+13 verbose tar pack   '.' ]
+14 verbose tarball /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+15 verbose folder .
+16 info prepublish s3cp@0.0.11
+17 silly lockFile 3a52ce78- .
+18 verbose lock . /Users/craig/.npm/3a52ce78-.lock
+19 silly lockFile fbebabce-6734-0-29002812039107084-tmp-tgz /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+20 verbose lock /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz /Users/craig/.npm/fbebabce-6734-0-29002812039107084-tmp-tgz.lock
+21 silly lockFile 3a52ce78- .
+22 silly lockFile 3a52ce78- .
+23 silly lockFile fbebabce-6734-0-29002812039107084-tmp-tgz /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+24 silly lockFile fbebabce-6734-0-29002812039107084-tmp-tgz /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+25 verbose tar unpack /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+26 silly lockFile 1bf5b541-6734-0-29002812039107084-package /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+27 verbose lock /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package /Users/craig/.npm/1bf5b541-6734-0-29002812039107084-package.lock
+28 silly lockFile fbebabce-6734-0-29002812039107084-tmp-tgz /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+29 verbose lock /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz /Users/craig/.npm/fbebabce-6734-0-29002812039107084-tmp-tgz.lock
+30 silly gunzTarPerm modes [ '755', '644' ]
+31 silly gunzTarPerm extractEntry package.json
+32 silly gunzTarPerm extractEntry .npmignore
+33 silly gunzTarPerm extractEntry README.md
+34 silly gunzTarPerm extractEntry bin/sc3p
+35 silly gunzTarPerm extractEntry docs/brainstorm.coffee
+36 silly gunzTarPerm extractEntry lib/index.js
+37 silly gunzTarPerm extractEntry lib/sync.js
+38 silly gunzTarPerm extractEntry makefile
+39 silly gunzTarPerm extractEntry src/index.coffee
+40 silly gunzTarPerm extractEntry src/sync.coffee
+41 verbose read json /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package/package.json
+42 silly lockFile 1bf5b541-6734-0-29002812039107084-package /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+43 silly lockFile 1bf5b541-6734-0-29002812039107084-package /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+44 silly lockFile fbebabce-6734-0-29002812039107084-tmp-tgz /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+45 silly lockFile fbebabce-6734-0-29002812039107084-tmp-tgz /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/tmp.tgz
+46 verbose from cache /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package/package.json
+47 verbose tar pack [ '/Users/craig/.npm/s3cp/0.0.11/package.tgz',
+47 verbose tar pack   '/var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package' ]
+48 verbose tarball /Users/craig/.npm/s3cp/0.0.11/package.tgz
+49 verbose folder /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+50 silly lockFile 1bf5b541-6734-0-29002812039107084-package /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+51 verbose lock /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package /Users/craig/.npm/1bf5b541-6734-0-29002812039107084-package.lock
+52 silly lockFile 94e9bb48-raig-npm-s3cp-0-0-11-package-tgz /Users/craig/.npm/s3cp/0.0.11/package.tgz
+53 verbose lock /Users/craig/.npm/s3cp/0.0.11/package.tgz /Users/craig/.npm/94e9bb48-raig-npm-s3cp-0-0-11-package-tgz.lock
+54 silly lockFile 1bf5b541-6734-0-29002812039107084-package /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+55 silly lockFile 1bf5b541-6734-0-29002812039107084-package /var/folders/n1/r96x64mx6jzcbzkbz1ddrw6r0000gn/T/npm-59199/1364771896734-0.29002812039107084/package
+56 silly lockFile 94e9bb48-raig-npm-s3cp-0-0-11-package-tgz /Users/craig/.npm/s3cp/0.0.11/package.tgz
+57 silly lockFile 94e9bb48-raig-npm-s3cp-0-0-11-package-tgz /Users/craig/.npm/s3cp/0.0.11/package.tgz
+58 silly lockFile 5fa8df41-rs-craig-npm-s3cp-0-0-11-package /Users/craig/.npm/s3cp/0.0.11/package
+59 verbose lock /Users/craig/.npm/s3cp/0.0.11/package /Users/craig/.npm/5fa8df41-rs-craig-npm-s3cp-0-0-11-package.lock
+60 silly lockFile 5fa8df41-rs-craig-npm-s3cp-0-0-11-package /Users/craig/.npm/s3cp/0.0.11/package
+61 silly lockFile 5fa8df41-rs-craig-npm-s3cp-0-0-11-package /Users/craig/.npm/s3cp/0.0.11/package
+62 verbose tar unpack /Users/craig/.npm/s3cp/0.0.11/package.tgz
+63 silly lockFile 5fa8df41-rs-craig-npm-s3cp-0-0-11-package /Users/craig/.npm/s3cp/0.0.11/package
+64 verbose lock /Users/craig/.npm/s3cp/0.0.11/package /Users/craig/.npm/5fa8df41-rs-craig-npm-s3cp-0-0-11-package.lock
+65 silly lockFile 94e9bb48-raig-npm-s3cp-0-0-11-package-tgz /Users/craig/.npm/s3cp/0.0.11/package.tgz
+66 verbose lock /Users/craig/.npm/s3cp/0.0.11/package.tgz /Users/craig/.npm/94e9bb48-raig-npm-s3cp-0-0-11-package-tgz.lock
+67 silly gunzTarPerm modes [ '755', '644' ]
+68 silly gunzTarPerm extractEntry package.json
+69 silly gunzTarPerm extractEntry .npmignore
+70 silly gunzTarPerm extractEntry README.md
+71 silly gunzTarPerm extractEntry bin/sc3p
+72 silly gunzTarPerm extractEntry docs/brainstorm.coffee
+73 silly gunzTarPerm extractEntry lib/index.js
+74 silly gunzTarPerm extractEntry lib/sync.js
+75 silly gunzTarPerm extractEntry makefile
+76 silly gunzTarPerm extractEntry src/index.coffee
+77 silly gunzTarPerm extractEntry src/sync.coffee
+78 verbose read json /Users/craig/.npm/s3cp/0.0.11/package/package.json
+79 silly lockFile 5fa8df41-rs-craig-npm-s3cp-0-0-11-package /Users/craig/.npm/s3cp/0.0.11/package
+80 silly lockFile 5fa8df41-rs-craig-npm-s3cp-0-0-11-package /Users/craig/.npm/s3cp/0.0.11/package
+81 silly lockFile 94e9bb48-raig-npm-s3cp-0-0-11-package-tgz /Users/craig/.npm/s3cp/0.0.11/package.tgz
+82 silly lockFile 94e9bb48-raig-npm-s3cp-0-0-11-package-tgz /Users/craig/.npm/s3cp/0.0.11/package.tgz
+83 silly shasum updated bytes 6395
+84 info shasum 7868b22a627759463262b0bd011b5785532adfff
+84 info shasum /Users/craig/.npm/s3cp/0.0.11/package.tgz
+85 verbose from cache /Users/craig/.npm/s3cp/0.0.11/package/package.json
+86 verbose chmod /Users/craig/.npm/s3cp/0.0.11/package.tgz 644
+87 verbose chown /Users/craig/.npm/s3cp/0.0.11/package.tgz [ 501, 20 ]
+88 silly lockFile 3a52ce78- .
+89 silly publish { name: 's3cp',
+89 silly publish   version: '0.0.11',
+89 silly publish   description: 'Similar to rsync',
+89 silly publish   main: './lib/index.js',
+89 silly publish   directories: { doc: 'docs' },
+89 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+89 silly publish   repository: { type: 'git', url: 'git://github.com/crcn/node-s3cp.git' },
+89 silly publish   bin: { s3cp: './bin/sc3p' },
+89 silly publish   author: '',
+89 silly publish   license: 'BSD',
+89 silly publish   readmeFilename: 'README.md',
+89 silly publish   gitHead: '0198f8cdd1e8d7d858fb6bac4cbd36e59cdf003a',
+89 silly publish   dependencies:
+89 silly publish    { async: '0.2.x',
+89 silly publish      mime: '1.2.x',
+89 silly publish      mkdirp: '0.3.x',
+89 silly publish      rmdir: '1.0.x',
+89 silly publish      sift: '0.0.x',
+89 silly publish      stepc: '0.0.x',
+89 silly publish      commander: '1.1.x',
+89 silly publish      knox: '0.5.x',
+89 silly publish      cstep: '0.0.x',
+89 silly publish      mimetype: '0.0.x',
+89 silly publish      winston: '0.6.x',
+89 silly publish      walkr: '0.0.x',
+89 silly publish      outcome: '0.0.x',
+89 silly publish      toarray: '0.0.x',
+89 silly publish      underscore: '1.4.x' },
+89 silly publish   readme: '### S3 file synchronization\n\nSimilar to rsync, or git. s3cp looks for the difference in remote files, and synchronizes them with either a `pull`, or `push`.\n\n### Help\n\n```\n  Usage: s3cp [options] [command]\n\n  Commands:\n\n    pull [config]          downloading files from s3\n    push [config]          upload files to s3\n    clean-pull [config]    re-downloads files to s3\n\n  Options:\n\n    -h, --help             output usage information\n    -c, --config <config>  s3cp config path\n    -s, --skip <count>     skip first N files for upload\n    -v --validate          validate the server files before uploading\n```\n\nHere\'s how you publish files:\n\n```bash\ns3cp publish ./files.json --config ./credentials.json\n```\n\nfiles.json:\n\n```json\n[\n  {\n    "path": "path/to/file",\n    "name": "name-of-repo"\n  },\n  {\n    "path": "another/path/to/file",\n    "name": "name-of-repo2"\n  },\n]\n```\n\ncredentials.json:\n\n```json\n{\n  key: "AWS_KEY",\n  secret: "AWS_SECRET",\n  bucket: "AWS_BUCKET"\n}\n```\n\nWhenever you change files, simply re-publish with the same command, and s3cp will only copy the files that have changed.\n\nTo pull files from s3cp, call:\n\n```bash\ns3cp pull ./files.json --config ./credentials.json\n```\n\ns3cp will synchronize the local files whenever the remote files change.\n',
+89 silly publish   _id: 's3cp@0.0.11',
+89 silly publish   dist: { shasum: '7868b22a627759463262b0bd011b5785532adfff' },
+89 silly publish   _from: '.' }
+90 verbose url raw s3cp
+91 verbose url resolving [ 'http://registry.npmjs.org/', './s3cp' ]
+92 verbose url resolved http://registry.npmjs.org/s3cp
+93 info trying registry request attempt 1 at 16:18:28
+94 http PUT http://registry.npmjs.org/s3cp
+95 http 409 http://registry.npmjs.org/s3cp
+96 verbose url raw s3cp
+97 verbose url resolving [ 'http://registry.npmjs.org/', './s3cp' ]
+98 verbose url resolved http://registry.npmjs.org/s3cp
+99 info trying registry request attempt 1 at 16:18:28
+100 http GET http://registry.npmjs.org/s3cp
+101 http 200 http://registry.npmjs.org/s3cp
+102 error publish fail Cannot publish over existing version.
+102 error publish fail Update the 'version' field in package.json and try again.
+102 error publish fail
+102 error publish fail If the previous version was published in error, see:
+102 error publish fail     npm help unpublish
+102 error publish fail
+102 error publish fail To automatically increment version numbers, see:
+102 error publish fail     npm help version
+103 error System Darwin 12.3.0
+104 error command "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+105 error cwd /Users/craig/Developer/Public/node-s3cp
+106 error node -v v0.8.22
+107 error npm -v 1.2.11
+108 error code EPUBLISHCONFLICT
+109 verbose exit [ 1, true ]
