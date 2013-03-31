@@ -279,22 +279,20 @@ module.exports = class
       if not --tries
         return next()
 
-      winston.info "##{@_i} s3 put #{file.rpath}"
-      @_s3.putFile file.lpath, file.rpath.replace(/\s/g, "%20"), (err) ->
+      o = outcome.e (err) ->
+        winston.error "s3 put #{file.rpath} ERR #{err.message}"
+        tryUploadingFile()
 
-        if err
-          winston.error "s3 put #{file.rpath} ERR #{err.message}"
-          return tryUploadingFile()
+      @_shouldReUploadFile file, o.s (shouldReUpload) =>
 
-        next()
+        if not shouldReUpload
+          winston.info "##{@_i} s3 skip #{file.rpath}"
+          return next()
 
-    @_shouldReUploadFile file, outcome.e(next).s (shouldReUpload) =>
+        winston.info "##{@_i} s3 put #{file.rpath}"
+        @_s3.putFile file.lpath, file.rpath.replace(/\s/g, "%20"), o.s next
 
-      if not shouldReUpload
-        winston.info "##{@_i} s3 skip #{file.rpath}"
-        return next()
-
-      tryUploadingFile()
+    tryUploadingFile()
 
     
 
