@@ -29,6 +29,8 @@ module.exports = class
     if not @options.skip
       @options.skip = 0
 
+    @validate = @options.validate
+
 
   ###
   ###
@@ -260,34 +262,70 @@ module.exports = class
   _uploadFiles: (callback) ->
     winston.info "upload limit: #{@options.limit}"
 
-    i = 0
-    async.eachLimit @_localManifestDiff, @options.limit, ((file, next) =>
+    @_i = 0
+    async.eachLimit @_localManifestDiff, @options.limit, @_uploadFile, callback
 
-      return next() if file.dir
-      tries = 10
-      i++
-      if i < @options.skip
+  ###
+  ###
+
+  _uploadFile: (file, next) =>
+    return next() if file.dir
+    tries = 10
+    if (++@_i) < @options.skip
+      return next()
+
+    tryUploadingFile = () =>
+
+      if not --tries
         return next()
 
-      retry = () =>
+      winston.info "##{@_i} s3 put #{file.rpath}"
+      @_s3.putFile file.lpath, file.rpath.replace(/\s/g, "%20"), (err) ->
 
-        if not --tries
-          return next()
+        if err
+          winston.error "s3 put #{file.rpath} ERR #{err.message}"
+          return tryUploadingFile()
 
-        winston.info "##{i} s3 put #{file.rpath}"
-        @_s3.putFile file.lpath, file.rpath.replace(/\s/g, "%20"), (err) ->
+        next()
 
-          if err
-            winston.error "s3 put #{file.rpath} ERR #{err.message}"
-            return retry()
+    @_shouldReUploadFile file, outcome.e(next).s (shouldReUpload) =>
 
-          next()
+      if not shouldReUpload
+        winston.info "##{@_i} s3 skip #{file.rpath}"
+        return next()
 
-      retry()
+      tryUploadingFile()
 
-    ), callback
+    
 
+  ###
+  ###
 
+  _shouldReUploadFile: (file, next) ->
+    o = outcome.e next
+    self = @
+    req = null
+
+    if not @validate 
+      return next null, true
+
+    step.async(
+      (() ->
+        req = self._s3.getFile file.rpath.replace(/\s/g, "%20"), @
+      ),
+      ( o.s (res) ->
+
+        req.abort()
+
+        # file doesn't exist? 
+        if res.statusCode isnt 200
+          return @ null, true
+
+        # the file might have been particually uploaded. Check the content length for that.
+        @ null, file.size isnt Number res.headers['content-length']
+      ),
+      next
+    )
 
   ###
   ###
@@ -336,13 +374,11 @@ module.exports = class
   _makeLocalManifest: (callback) ->
     @_localManifest = @_localFiles.map (file) =>
       {
-        #name: file.destination,
-        #rpath: hash.update(file).digest("base64"),
-        #rpath: "'"+@_dest(file.destination)+"'",
         rpath: @_dest(file.destination),
         lpath: file.source,
         mtime: new Date(file.stat.mtime).getTime(),
         ctime: new Date(file.stat.ctime).getTime(),
+        size: file.stat.size,
         dir: file.stat.isDirectory()
       }
 
