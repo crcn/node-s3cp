@@ -2,6 +2,25 @@
 
 Similar to rsync, or git. s3cp looks for the difference in remote files, and synchronizes them with either a `pull`, or `push`.
 
+### Help
+
+```
+  Usage: s3cp [options] [command]
+
+  Commands:
+
+    pull [config]          downloading files from s3
+    push [config]          upload files to s3
+    clean-pull [config]    re-downloads files to s3
+
+  Options:
+
+    -h, --help             output usage information
+    -c, --config <config>  s3cp config path
+    -s, --skip <count>     skip first N files for upload
+    -v --validate          validate the server files before uploading
+```
+
 Here's how you publish files:
 
 ```bash
