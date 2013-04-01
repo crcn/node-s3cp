@@ -13,7 +13,7 @@ rmdir = require "rmdir"
 
 mime = require "mime"
 
-outcome.logAllErrors false
+outcome.logAllErrors true
 
 module.exports = class 
 
